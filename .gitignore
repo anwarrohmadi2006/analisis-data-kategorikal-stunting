@@ -1,0 +1,13 @@
+# Git Ignore
+__pycache__/
+*.zip
+*.pyc
+temp_test_notebook.py
+extracted/temp_test_katex.pdf
+temp_laporan.html
+modal_jupyter_server.py
+.idea/
+.vscode/
+.virtualenv/
+.venv/
+venv/
