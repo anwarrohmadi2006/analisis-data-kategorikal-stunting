@@ -11,6 +11,7 @@
 | **Topik** | Regresi Logistik & Analisis Data Biner |
 | **Metode** | Point Bi-Serial, Regresi Logistik, Regresi Probit |
 | **Tanggal** | 8 Juni 2026 |
+| **GitHub Repository** | [anwarrohmadi2006/analisis-data-kategorikal-stunting](https://github.com/anwarrohmadi2006/analisis-data-kategorikal-stunting) |
 
 
 
