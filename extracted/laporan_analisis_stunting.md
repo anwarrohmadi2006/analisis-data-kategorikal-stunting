@@ -7,7 +7,7 @@
 | :--- | :--- |
 | **Nama** | Anwar Rohmadi |
 | **NIM** | 247411027 |
-| **Mata Kuliah** | Analisis Data Kategorikal dengan Python |
+| **Mata Kuliah** | Analisis Data Kategorikal |
 | **Topik** | Regresi Logistik & Analisis Data Biner |
 | **Metode** | Point Bi-Serial, Regresi Logistik, Regresi Probit |
 | **Tanggal** | 8 Juni 2026 |
