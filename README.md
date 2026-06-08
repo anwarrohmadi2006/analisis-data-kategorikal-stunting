@@ -1,28 +1,75 @@
-# Analisis Data Kategorikal - Hubungan Pendapatan & Sanitasi terhadap Stunting
+# Analisis Data Kategorikal: Pengaruh Pendapatan Keluarga dan Kondisi Sanitasi terhadap Status Stunting pada Balita
 
-Repositori ini berisi laporan analisis data kategorikal, kode pemrograman Python, dan Jupyter Notebook mengenai pengaruh pendapatan keluarga (*Income*) dan kondisi sanitasi (*Sanitation*) terhadap status stunting pada balita.
+Repositori ini memuat berkas proyek, kode pemrograman, dan laporan ilmiah untuk memenuhi tugas mata kuliah **Analisis Data Kategorikal**. Penelitian ini berfokus pada pemodelan statistik variabel dependen nominal dikotomus (stunting) menggunakan variabel independen skala kontinu (pendapatan keluarga dan skor sanitasi lingkungan).
 
-## Identitas Penulis
+## Identitas Mahasiswa
 - **Nama**: Anwar Rohmadi
 - **NIM**: 247411027
-- **Mata Kuliah**: Analisis Data Kategorikal dengan Python
-- **Topik**: Regresi Logistik & Analisis Data Biner
+- **Mata Kuliah**: Analisis Data Kategorikal
+- **Tautan Repositori**: [https://github.com/anwarrohmadi2006/analisis-data-kategorikal-stunting](https://github.com/anwarrohmadi2006/analisis-data-kategorikal-stunting)
 
-## Daftar Isi Repositori
-1. **[analisis_stunting.ipynb](analisis_stunting.ipynb)**: Jupyter Notebook yang memuat seluruh proses analisis data dari pemuatan data, uji asosiasi (korelasi Point Bi-Serial), pemodelan Regresi Logistik (Model A & Model B), Probit Model pembanding, hingga visualisasi hasil.
-2. **[extracted/analisis_stunting.py](extracted/analisis_stunting.py)**: Kode pemrograman Python mandiri yang dapat dijalankan secara langsung.
-3. **[extracted/laporan_analisis_stunting.md](extracted/laporan_analisis_stunting.md)**: Dokumen laporan analisis stunting format Markdown lengkap dengan rumus LaTeX.
-4. **[extracted/laporan_analisis_stunting.pdf](extracted/laporan_analisis_stunting.pdf)**: Dokumen laporan resmi format PDF siap cetak dengan font Times New Roman, teks rata kanan-kiri (justified), layout bersih bebas dari garis pembatas horizontal (strips), dan persamaan matematika ter-render dengan sempurna.
+---
 
-## Metode Analisis
-- **Uji Korelasi Point Bi-Serial**: Mengukur hubungan asosiasi antara variabel independen kontinu dengan variabel dependen biner.
-- **Regresi Logistik Biner**: Pemodelan peluang stunting menggunakan fungsi link logit.
-- **Regresi Probit**: Model alternatif pembanding dengan fungsi link probit (distribusi normal standar).
-- **ROC-AUC**: Mengukur kemampuan diskriminasi dan evaluasi performa model klasifikasi.
+## Struktur Repositori
+Repositori ini disusun secara sistematis dengan struktur berkas sebagai berikut:
+```text
+├── analisis_stunting.ipynb       # Jupyter Notebook interaktif (kode + visualisasi)
+├── README.md                     # Panduan repositori akademik
+├── .gitignore                    # Konfigurasi pengabaian berkas temporary
+└── extracted/
+    ├── analisis_stunting.py      # Kode program Python utama (.py)
+    ├── laporan_analisis_stunting.md  # Naskah laporan format Markdown
+    ├── laporan_analisis_stunting.pdf # Laporan resmi format PDF (Times New Roman, Justified, KaTeX)
+    └── [Visualisasi & Gambar Output...]
+```
 
-## Cara Menjalankan Kode
-Anda dapat menjalankan script python secara mandiri:
+---
+
+## Metodologi Analisis
+Penelitian ini menerapkan beberapa metode statistika untuk data kategorikal:
+
+1. **Analisis Deskriptif & Uji Asosiasi**:
+   - Statistika deskriptif pada masing-masing kelompok status stunting (mean, standar deviasi, nilai minimum, dan nilai maksimum).
+   - Uji ukuran asosiasi menggunakan **Point Bi-Serial Correlation Coefficient** ($r_{pb}$) untuk mengukur kekuatan hubungan nominal-kontinu.
+
+2. **Model Regresi Logistik Biner**:
+   - **Model A (Income)**:
+     $$\text{logit}(P(\text{Stunting}=1)) = \ln\left(\frac{P(\text{Stunting}=1)}{1 - P(\text{Stunting}=1)}\right) = \beta_0 + \beta_1 \cdot \text{Income}$$
+   - **Model B (Sanitation)**:
+     $$\text{logit}(P(\text{Stunting}=1)) = \ln\left(\frac{P(\text{Stunting}=1)}{1 - P(\text{Stunting}=1)}\right) = \beta_0 + \beta_1 \cdot \text{Sanitation}$$
+
+3. **Model Probit (Pembanding)**:
+   - Estimasi model dengan link function probit $\Phi^{-1}(p)$ untuk membandingkan kecocokan model berdasarkan metrik informasi:
+     $$P(\text{Stunting}=1) = \Phi(\beta_0 + \beta_1 \cdot X)$$
+
+4. **Metrik Evaluasi**:
+   - Uji Likelihood Ratio ($G^2$) untuk signifikansi model secara serentak.
+   - *Pseudo R-Square* (McFadden).
+   - Matriks Klasifikasi (*Confusion Matrix*) untuk mengukur akurasi, presisi, sensitivitas, dan spesifisitas.
+   - Kurva karakteristik operasi penerima (*ROC Curve*) dan luasan di bawah kurva (*AUC*).
+
+---
+
+## Persyaratan Sistem & Dependensi
+Pemodelan ini dibangun menggunakan bahasa pemrograman Python 3 dengan dependensi utama:
+- `numpy`
+- `pandas`
+- `scipy`
+- `statsmodels`
+- `scikit-learn`
+- `matplotlib`
+- `seaborn`
+
+---
+
+## Petunjuk Menjalankan Proyek
+### Menjalankan Jupyter Notebook (.ipynb)
+1. Buka Jupyter Notebook/Lab lokal Anda.
+2. Buka berkas `analisis_stunting.ipynb`.
+3. Jalankan sel kode secara berurutan untuk melihat hasil analisis dan grafik visualisasi interaktif.
+
+### Menjalankan Script Python (.py)
+Eksekusi langsung script python melalui terminal atau command prompt:
 ```bash
 python extracted/analisis_stunting.py
 ```
-Atau membuka notebook `analisis_stunting.ipynb` di Jupyter Lab / Google Colab.
